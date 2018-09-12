@@ -47,13 +47,30 @@ faas-cli deploy
 ```
 
 ## Parameters:
-Parameters must be passed in JSON format:  
-Example:
-```json
-{
-  "bcid": "qrcode",
-  "text": "Hello world from OpenFaaS!"
-}
+Parameters must be passed in x-www-form-urlencoded format:  
+Sample:
+```
+bcid=qrcode&text=Hello+world+from+OpenFaaS!
+```
+
+Examples:  
+#### QueryString
+```bash
+# GET
+$ curl -X GET \
+    https://padiazg.o6s.io/barcode-generator?bcid=qrcode&text=Hello+from+OpenFaas+Cloud
+
+# POST
+$ curl -X POST \
+    https://padiazg.o6s.io/barcode-generator?bcid=qrcode&text=Hello+from+OpenFaas+Cloud
+```
+#### Body
+```bash
+# Body
+$ curl -X POST \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    -d "bcid=qrcode&text=hola+mundo!!" \
+    https://padiazg.o6s.io/barcode-generator
 ```
 
 Specific from this project:
@@ -79,7 +96,7 @@ Search the symbol you are interested in, go into the page (Ex: let´s say ```EAN
     + "L" : Counter-clockwise (left) 90 degree rotation.  
     + "I" : Inverted 180 degree rotation.   
 
-*  **paddingwidth**: Sets the left and right padding (in points/pixels) around the rendered barcode. Rotates and scales with the image.
+* **paddingwidth**: Sets the left and right padding (in points/pixels) around the rendered barcode. Rotates and scales with the image.
 
 * **paddingheight**: Sets the top and bottom padding (in points/pixels) around the rendered barcode. Rotates and scales with the image.
 
