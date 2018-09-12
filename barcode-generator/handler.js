@@ -26,7 +26,7 @@ module.exports = (context, callback) => {
     const payload = Http_Query ? Http_Query : context;
     let parameters = querystring.parse(payload);
 
-    if (!optioparametersns.bcid || !parameters.text) {
+    if (!parameters.bcid || !parameters.text) {
         callback('bdid & text are required', undefined);
         return;
     } // if (!parameters.bcid || !parameters.text) ...
